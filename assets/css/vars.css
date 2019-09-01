@@ -1,0 +1,3 @@
+.btn {
+  @apply uppercase rounded-lg text-3xl py-4 px-8 ;
+}
