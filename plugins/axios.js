@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const axiosGet = axios.create({
+export const axiosGetData = axios.create({
   method: 'get',
   baseURL: process.env.API_BASE,
   auth: {
