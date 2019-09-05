@@ -40,7 +40,7 @@
       </form>
     </section>
 
-    <section v-if="apiError && apiErrorMessage">
+    <section v-if="apiError && apiErrorMessage" class="text-center">
       <p>{{ apiErrorMessage }}</p>
     </section>
 
