@@ -92,7 +92,7 @@ export default {
         this.apiLoading = true
 
         const userData = await axiosGetData.get(
-          `/business/${process.env.BUSINESS_ID}/client/${clientId}`
+          `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client/${clientId}`
         )
 
         this.apiLoading = false
@@ -111,7 +111,7 @@ export default {
         this.apiLoading = true
 
         const voucherData = await axiosGetData.get(
-          `/business/${process.env.BUSINESS_ID}/voucher/?clientId=${clientId}`
+          `/business/${process.env.NUXT_ENV_BUSINESS_ID}/voucher/?clientId=${clientId}`
         )
 
         this.apiLoading = false
@@ -136,10 +136,10 @@ export default {
         }
 
         const postVoucher = await axiosPostData.post(
-          `/business/${process.env.BUSINESS_ID}/voucher`,
+          `/business/${process.env.NUXT_ENV_BUSINESS_ID}/voucher`,
           {
             clientId: this.userData.clientId,
-            creatingBranchId: process.env.BRANCH_ID,
+            creatingBranchId: process.env.NUXT_ENV_BRANCH_ID,
             issueDate: new Date().toISOString(),
             expiryDate: '2099-09-04T12:48:55.084Z',
             originalBalance: valueField.value

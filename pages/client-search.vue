@@ -183,16 +183,16 @@ export default {
 
     getFacetedSearch() {
       const byEmail = axiosGetData.get(
-        `/business/${process.env.BUSINESS_ID}/client?email=~${this.validatedSearchTerm}%`
+        `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?email=~${this.validatedSearchTerm}%`
       )
       const byFName = axiosGetData.get(
-        `/business/${process.env.BUSINESS_ID}/client?firstName=~${this.validatedSearchTerm}%`
+        `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?firstName=~${this.validatedSearchTerm}%`
       )
       const byLName = axiosGetData.get(
-        `/business/${process.env.BUSINESS_ID}/client?lastName=~${this.validatedSearchTerm}%`
+        `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?lastName=~${this.validatedSearchTerm}%`
       )
       const byPhone = axiosGetData.get(
-        `/business/${process.env.BUSINESS_ID}/client?phone=~${this.validatedSearchTerm}%`
+        `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?phone=~${this.validatedSearchTerm}%`
       )
 
       return Promise.all([byEmail, byFName, byLName, byPhone])

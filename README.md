@@ -11,12 +11,14 @@ This is a Nuxt.js Vue app. The parts you will most likely be interested in are l
 You'll need a `.env` file in the root of this project for it to work with the following variables:
 
 ``` text
-BASIC_AUTH_USER=
-BASIC_AUTH_PASS=
-BUSINESS_ID=
-BRANCH_ID=
-API_BASE=https://api-gateway-dev.phorest.com/third-party-api-server/api
+NUXT_ENV_BASIC_AUTH_USER=
+NUXT_ENV_BASIC_AUTH_PASS=
+NUXT_ENV_BUSINESS_ID=
+NUXT_ENV_BRANCH_ID=
+NUXT_ENV_API_BASE=https://api-gateway-dev.phorest.com/third-party-api-server/api
 ```
+
+I used the details provided in the tech test description.
 
 ## Build Setup
 
