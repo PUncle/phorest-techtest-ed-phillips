@@ -4,7 +4,12 @@ module.exports = {
     extend: {},
     container: {
       center: false
+    },
+    fontFamily: {
+      title: ['Josefin Sans', 'sans-serif'],
+      body: ['Open Sans', 'sans-serif']
     }
   },
-  variants: {}
+  variants: {},
+  plugins: [require('tailwindcss-animatecss')(['responsive'])]
 }
