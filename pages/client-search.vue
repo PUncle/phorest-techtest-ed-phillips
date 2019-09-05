@@ -213,6 +213,7 @@ export default {
       if (this.formErrors.length) {
         // Throw user back into the input field
         this.$refs.clientSearch.focus()
+        return false
       }
 
       if (trimmedInput) {
