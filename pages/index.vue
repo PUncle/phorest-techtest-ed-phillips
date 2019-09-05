@@ -10,7 +10,7 @@
         >
           Start
         </nuxt-link>
-        <section v-if="NUXT_ENV_BUSINESS_ID" class="text-red-800 mt-4">
+        <section v-if="!envAvailable" class="text-red-800 mt-4">
           <p class="mb-2">
             It appears that you do not have a .env file in root, which means
             that none of this will work.
@@ -37,6 +37,11 @@ export default {
   data() {
     return {
       message: 'Phorest tech test'
+    }
+  },
+  computed: {
+    envAvailable() {
+      return !!process.env.NUXT_ENV_BUSINESS_ID
     }
   }
 }
