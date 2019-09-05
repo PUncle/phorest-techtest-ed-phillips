@@ -2,7 +2,7 @@
 
 [https://phorest-techtest-ed-phillips.netlify.com/](https://phorest-techtest-ed-phillips.netlify.com/)
 
-This is a Nuxt.js Vue app. The parts you will most likely be interested in are located in the `pages` and `components` directories. Nuxt automatically generates the router, so 'page' components which contain most of the functionality are inside `pages`.
+This is a Nuxt Vue.js SPA. The parts you will most likely be interested in are located in the `pages` and `components` directories. Nuxt automatically generates the router, so 'page' components which contain most of the functionality are inside `pages`.
 
 > Show us examples of 2-3 patterns you feel important to building an application like this and we will use them to drive the discussion while reviewing the test with you.
 
