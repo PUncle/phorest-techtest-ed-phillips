@@ -10,6 +10,20 @@
         >
           Start
         </nuxt-link>
+        <section class="text-red-800 mt-4">
+          <p class="mb-2">
+            It appears that you do not have a .env file in root, which means
+            that none of this will work.
+          </p>
+          <p>
+            You'll probably want to
+            <a
+              class="text-green-800"
+              href="https://github.com/PUncle/phorest-techtest-ed-phillips"
+              >fix that</a
+            >.
+          </p>
+        </section>
       </div>
     </div>
   </section>
