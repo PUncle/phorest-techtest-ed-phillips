@@ -12,13 +12,6 @@ import Navbar from '~/components/Navbar.vue'
 export default {
   components: {
     Navbar
-  },
-  data() {
-    return {
-      loggedIn: false,
-      loading: false,
-      selectedBranchName: ''
-    }
   }
 }
 </script>
