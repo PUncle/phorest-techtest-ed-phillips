@@ -19,7 +19,7 @@
             autofocus
           />
           <button
-            class="hover:bg-blue-700 focus:outline-none rounded-r"
+            class="search-users hover:bg-blue-700 focus:outline-none rounded-r"
             @click.prevent="handleSearchClients"
           >
             GO
@@ -49,7 +49,7 @@
       <div v-if="clients && clients.results">
         <p class="mb-2">
           {{ clients.results }}
-          {{ pluraliseCustomer(clients.results, 'client') }} found
+          {{ `${pluraliseWord(clients.results, 'client')} found` }}
         </p>
         <ClientResultCard
           v-for="client in clients.list"
@@ -80,6 +80,8 @@
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
+import axios from 'axios'
 import ClientResultCard from '~/components/ClientResultCard.vue'
 import LoadingSpinner from '~/components/LoadingSpinner.vue'
 import { whitelistChars, getLastWord } from '~/components/mixins/helpers'
@@ -117,7 +119,7 @@ export default {
 
   mounted() {
     // eslint-disable-next-line no-console
-    console.log(this.$route.query.term)
+    // console.log(this.$route.query.term)
 
     if (this.$route.query.term) {
       this.rawUserSearchInput = this.$route.query.term
@@ -148,18 +150,17 @@ export default {
     async handleSearchClients() {
       // Loading
       this.apiLoading = true
+      this.clients = null
+
+      const validatedSearchTerm = await this.validateUserInput(
+        this.rawUserSearchInput
+      )
 
       // Update the router with search terms
       this.$router.push({
         path: 'client-search',
         query: { term: this.validatedSearchTerm }
       })
-
-      this.clients = null
-
-      const validatedSearchTerm = this.validateUserInput(
-        this.rawUserSearchInput
-      )
 
       if (validatedSearchTerm) {
         try {
@@ -177,19 +178,20 @@ export default {
       }
 
       this.apiLoading = false
+      return false
     },
 
-    async getFacetedSearch() {
-      const byEmail = await axiosGetData.get(
+    getFacetedSearch() {
+      const byEmail = axiosGetData.get(
         `/business/${process.env.BUSINESS_ID}/client?email=~${this.validatedSearchTerm}%`
       )
-      const byFName = await axiosGetData.get(
+      const byFName = axiosGetData.get(
         `/business/${process.env.BUSINESS_ID}/client?firstName=~${this.validatedSearchTerm}%`
       )
-      const byLName = await axiosGetData.get(
+      const byLName = axiosGetData.get(
         `/business/${process.env.BUSINESS_ID}/client?lastName=~${this.validatedSearchTerm}%`
       )
-      const byPhone = await axiosGetData.get(
+      const byPhone = axiosGetData.get(
         `/business/${process.env.BUSINESS_ID}/client?phone=~${this.validatedSearchTerm}%`
       )
 
@@ -198,7 +200,7 @@ export default {
 
     validateUserInput(inputString) {
       this.formErrors = []
-      const trimmedInput = inputString.trim()
+      const trimmedInput = inputString.length ? inputString.trim() : inputString
 
       if (!trimmedInput) {
         this.formErrors.push('Please enter a search term')
@@ -223,21 +225,18 @@ export default {
 
         this.validatedSearchTerm = validated
 
-        return true
+        return validated
       }
 
       return false
     },
 
-    pluraliseCustomer(number, word) {
+    pluraliseWord(number, word) {
       if (number > 1) return `${word}s`
       return word
     },
 
     handleSelectClient(clientId) {
-      // eslint-disable-next-line no-console
-      console.log('YAY', clientId)
-
       this.$nuxt.$router.push({ path: `/user/${clientId}` })
     }
   }
