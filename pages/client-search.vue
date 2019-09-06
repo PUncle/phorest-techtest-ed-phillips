@@ -154,7 +154,6 @@ export default {
       if (validatedSearchTerm) {
         // Update the router with search terms
         this.$router.push({
-          path: 'client-search',
           query: { term: this.validatedSearchTerm }
         })
         try {
