@@ -1,7 +1,7 @@
 <template>
-  <article class="w-full border-none">
+  <article class="client-search">
     <section class="flex justify-center items-center">
-      <form class="bg-white max-w-xl rounded px-8 pt-6 pb-8 mb-4">
+      <form>
         <label
           class="block text-gray-700 text-sm text-center font-bold mb-4"
           for="client-search"
@@ -12,7 +12,7 @@
             id="client-search"
             ref="clientSearch"
             v-model="rawUserSearchInput"
-            class="appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+            class="focus:outline-none"
             type="text"
             name="client-search"
             placeholder="Client search"
@@ -27,7 +27,7 @@
         </p>
         <div
           v-if="formErrors.length"
-          class="form-errors mt-4 rounded text-center text-white bg-red-400 p-2"
+          class="form-errors"
           :class="formErrors.length && 'animated fadeIn'"
         >
           <p>Please correct the following error(s):</p>
@@ -238,6 +238,23 @@ export default {
 </script>
 
 <style scoped>
+article.client-search {
+  @apply w-full;
+  @apply border-none;
+}
+
+form {
+  @apply bg-white max-w-xl rounded px-8 pt-6 pb-8 mb-4;
+}
+
+form input {
+  @apply appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.form-errors {
+  @apply mt-4 rounded text-center text-white bg-red-400 p-2;
+}
+
 article >>> button {
   @apply bg-blue-500;
   @apply text-white;
