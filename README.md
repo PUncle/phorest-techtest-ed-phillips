@@ -58,6 +58,6 @@ removeDuplicateResults(clientArray) {
 }
 ```
 
-Validating user input is another important part of this. I went with a whitelist function which only allows alphanumeric and common email characters. This goes for uri parameters too.
+Validating user input is another important part of this. I went with a whitelist function which only allows alphanumeric and common email characters. This goes for manually entered uri parameters too, which are validated before triggering a query to the API.
 
-Finally, having the app watch the query parameters allows for deep linking, and for the back button to work well; which means that the user can choose a customer and then go back to the search results to select another result.
+Finally, having the app watch the query parameters allows for deep linking, and for the back button to work properly; this means that the user can choose a customer from the search results, look at them, and then go back to the search results to select another result.
