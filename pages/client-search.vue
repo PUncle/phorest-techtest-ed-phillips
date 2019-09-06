@@ -12,7 +12,7 @@
             id="client-search"
             ref="clientSearch"
             v-model="rawUserSearchInput"
-            class="appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            class="appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
             type="text"
             name="client-search"
             placeholder="Client search"
