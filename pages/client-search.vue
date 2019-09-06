@@ -156,13 +156,12 @@ export default {
         this.rawUserSearchInput
       )
 
-      // Update the router with search terms
-      this.$router.push({
-        path: 'client-search',
-        query: { term: this.validatedSearchTerm }
-      })
-
       if (validatedSearchTerm) {
+        // Update the router with search terms
+        this.$router.push({
+          path: 'client-search',
+          query: { term: this.validatedSearchTerm }
+        })
         try {
           const clientArray = await this.getFacetedSearch()
           const clientList = this.removeDuplicateResults(clientArray)
