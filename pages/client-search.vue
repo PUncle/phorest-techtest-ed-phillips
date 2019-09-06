@@ -27,7 +27,7 @@
         </p>
         <div
           v-if="formErrors.length"
-          class="mt-4 rounded text-center text-white bg-red-400 p-2"
+          class="form-errors mt-4 rounded text-center text-white bg-red-400 p-2"
           :class="formErrors.length && 'animated fadeIn'"
         >
           <p>Please correct the following error(s):</p>
@@ -80,8 +80,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import axios from 'axios'
 import ClientResultCard from '~/components/ClientResultCard.vue'
 import LoadingSpinner from '~/components/LoadingSpinner.vue'
 import { whitelistChars, getLastWord } from '~/components/mixins/helpers'
@@ -118,9 +116,6 @@ export default {
   },
 
   mounted() {
-    // eslint-disable-next-line no-console
-    // console.log(this.$route.query.term)
-
     if (this.$route.query.term) {
       this.rawUserSearchInput = this.$route.query.term
       this.handleSearchClients()
