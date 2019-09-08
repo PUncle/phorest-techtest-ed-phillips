@@ -228,8 +228,6 @@ export default {
 
         return validated
       }
-
-      return false
     },
 
     pluraliseWord(number, word) {
