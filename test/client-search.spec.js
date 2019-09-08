@@ -11,6 +11,7 @@ describe('ClientSearch detail page', () => {
     wrapper = shallowMount(ClientSearch, {
       mocks: { $route: { query: { term: '' } } }
     })
+
     expect(wrapper.isVueInstance).toBeTruthy()
   })
 
@@ -73,25 +74,19 @@ describe('ClientSearch detail page', () => {
     const apiResponse = [
       {
         data: {
-          _embedded: {
-            clients: [{ clientId: '6euUCE3oFP3V6_guMBbFIA' }]
-          },
+          _embedded: { clients: [{ clientId: '6euUCE3oFP3V6_guMBbFIA' }] },
           page: { size: 1 }
         }
       },
       {
         data: {
-          _embedded: {
-            clients: [{ clientId: 'uIdTetEMkRK2k0HesKl-Ww' }]
-          },
+          _embedded: { clients: [{ clientId: 'uIdTetEMkRK2k0HesKl-Ww' }] },
           page: { size: 1 }
         }
       },
       {
         data: {
-          _embedded: {
-            clients: [{ clientId: 'uIdTetEMkRK2k0HesKl-Ww' }]
-          },
+          _embedded: { clients: [{ clientId: 'uIdTetEMkRK2k0HesKl-Ww' }] },
           page: { size: 1 }
         }
       },
@@ -101,14 +96,28 @@ describe('ClientSearch detail page', () => {
     ]
 
     const deduplicated = wrapper.vm.removeDuplicateResults(apiResponse)
-
     expect(deduplicated.results).toBe(2)
 
-    expect(Object.keys(deduplicated.list).length).toBe(2)
-
-    expect(Object.keys(deduplicated.list)).toStrictEqual([
+    const keys = Object.keys(deduplicated.list)
+    expect(keys.length).toBe(2)
+    expect(keys).toStrictEqual([
       '6euUCE3oFP3V6_guMBbFIA',
       'uIdTetEMkRK2k0HesKl-Ww'
     ])
+  })
+
+  it('pushes the router path to the client ID', () => {
+    wrapper = shallowMount(ClientSearch, {
+      mocks: {
+        $route: {
+          query: { term: '' },
+          params: { id: '123' }
+        },
+        $router: []
+      }
+    })
+
+    expect(wrapper.vm.handleSelectClient('123')).toBe('123')
+    expect(wrapper.vm.$router.length).toBe(1)
   })
 })

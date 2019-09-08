@@ -26,13 +26,9 @@ describe('ClientResultCard', () => {
   it('emits an event', () => {
     const wrapper = factory({ clientId: '4n2kzAtC31Lf12wWoT8sIg' })
     wrapper.vm.$emit('user-click', '4n2kzAtC31Lf12wWoT8sIg')
-    // assert event has been emitted
+
     expect(wrapper.emitted('user-click')).toBeTruthy()
-
-    // assert event count
     expect(wrapper.emitted('user-click').length).toBe(1)
-
-    // assert event payload
     expect(wrapper.emitted('user-click')[0]).toEqual(['4n2kzAtC31Lf12wWoT8sIg'])
   })
 })
