@@ -7,8 +7,3 @@ export const getLastWord = term => {
   const termArray = term.split(' ')
   return termArray.pop()
 }
-
-export const pluraliseWord = (number, word) => {
-  if (number > 1) return `${word}s`
-  return word
-}
