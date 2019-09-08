@@ -235,7 +235,8 @@ export default {
     },
 
     handleSelectClient(clientId) {
-      this.$nuxt.$router.push({ path: `/user/${clientId}` })
+      this.$router.push({ path: `/user/${clientId}` })
+      return clientId
     }
   }
 }
