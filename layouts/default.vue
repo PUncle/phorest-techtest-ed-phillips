@@ -69,4 +69,17 @@ article .client-status {
   @apply px-4;
   @apply uppercase;
 }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 400ms ease-in-out;
+}
 </style>

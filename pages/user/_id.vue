@@ -3,7 +3,7 @@
     <div class="flex flex-row">
       <ClientResultCard
         v-if="userData"
-        class="animated fadeIn border-transparent w-full"
+        class="fade-in border-transparent w-full"
         :client-id="userData.clientId"
         :first-name="userData.firstName"
         :last-name="userData.lastName"
@@ -18,7 +18,7 @@
       />
 
       <CreateVoucherForm
-        class="animated fadeIn"
+        class="fade-in"
         :voucher-post-success="voucherPostSuccess"
         :voucher-error="voucherError"
         @handle-add-voucher="handleAddVoucher"
@@ -29,7 +29,7 @@
       <CustomerVoucher
         v-for="voucher in voucherData"
         :key="voucher.voucherId"
-        class="w-full lg:w-1/2 px-2 animated fadeIn"
+        class="w-full lg:w-1/2 px-2 fade-in"
         :expiry-date="voucher.expiryDate"
         :remaining-balance="voucher.remainingBalance"
         :original-balance="voucher.originalBalance"

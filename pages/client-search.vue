@@ -28,7 +28,7 @@
         <div
           v-if="formErrors.length"
           class="form-errors"
-          :class="formErrors.length && 'animated fadeIn'"
+          :class="formErrors.length && 'fade-in'"
         >
           <p>Please correct the following error(s):</p>
           <ul>
@@ -54,7 +54,7 @@
         <ClientResultCard
           v-for="client in clients.list"
           :key="client.clientId"
-          class="animated fadeIn border"
+          class="fade-in border"
           :client-id="client.clientId"
           :first-name="client.firstName"
           :last-name="client.lastName"

@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-full  max-w-md ml-auto text-white mb-6"
+    class="w-full max-w-md ml-auto text-white mb-6"
     :class="voucherPostSuccess ? 'bg-green-500' : 'bg-gray-800'"
   >
     <div class="p-4 text-center uppercase">
@@ -46,5 +46,3 @@ export default {
   }
 }
 </script>
-
-<style></style>
