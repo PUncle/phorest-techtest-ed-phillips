@@ -154,11 +154,13 @@ export default {
       if (validatedSearchTerm) {
         // Update the router with search terms
         this.$router.push({
-          query: { term: this.validatedSearchTerm }
+          query: { term: validatedSearchTerm }
         })
         try {
-          const clientArray = await this.getFacetedSearch()
-          const clientList = this.removeDuplicateResults(clientArray)
+          // Hit API
+          const clientArray = await this.getFacetedSearch(validatedSearchTerm)
+          // Deduplicate
+          const clientList = await this.removeDuplicateResults(clientArray)
           // Set state
           this.clients = clientList
           this.apiLoading = false
@@ -167,6 +169,7 @@ export default {
         } catch (error) {
           this.apiError = true
           this.apiLoading = false
+          return error
         }
       }
 
@@ -174,26 +177,30 @@ export default {
       return false
     },
 
-    getFacetedSearch() {
-      const byEmail = axiosGetData.get(
-        `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?email=~${this.validatedSearchTerm}%`
-      )
-      const byFName = axiosGetData.get(
-        `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?firstName=~${this.validatedSearchTerm}%`
-      )
-      const byLName = axiosGetData.get(
-        `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?lastName=~${this.validatedSearchTerm}%`
-      )
-      const byPhone = axiosGetData.get(
-        `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?phone=~${this.validatedSearchTerm}%`
-      )
+    getFacetedSearch(searchTerm) {
+      try {
+        const byEmail = axiosGetData.get(
+          `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?email=~${searchTerm}%`
+        )
+        const byFName = axiosGetData.get(
+          `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?firstName=~${searchTerm}%`
+        )
+        const byLName = axiosGetData.get(
+          `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?lastName=~${searchTerm}%`
+        )
+        const byPhone = axiosGetData.get(
+          `/business/${process.env.NUXT_ENV_BUSINESS_ID}/client?phone=~${searchTerm}%`
+        )
 
-      return Promise.all([byEmail, byFName, byLName, byPhone])
+        return Promise.all([byEmail, byFName, byLName, byPhone])
+      } catch (error) {
+        Promise.reject(error)
+      }
     },
 
     validateUserInput(inputString) {
       this.formErrors = []
-      const trimmedInput = inputString.length ? inputString.trim() : inputString
+      const trimmedInput = inputString.length && inputString.trim()
 
       if (!trimmedInput) {
         this.formErrors.push('Please enter a search term')
@@ -226,8 +233,7 @@ export default {
     },
 
     pluraliseWord(number, word) {
-      if (number > 1) return `${word}s`
-      return word
+      return number > 1 ? `${word}s` : word
     },
 
     handleSelectClient(clientId) {
