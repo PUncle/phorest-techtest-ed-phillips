@@ -116,8 +116,8 @@ export default {
   },
 
   mounted() {
-    if (this.$route.query.term) {
-      this.rawUserSearchInput = this.$route.query.term
+    if (this.$nuxt.$route.query.term) {
+      this.rawUserSearchInput = this.$nuxt.$route.query.term
       this.handleSearchClients()
     }
   },
@@ -153,7 +153,7 @@ export default {
 
       if (validatedSearchTerm) {
         // Update the router with search terms
-        this.$router.push({
+        this.$nuxt.$router.push({
           query: { term: validatedSearchTerm }
         })
         try {
@@ -235,7 +235,7 @@ export default {
     },
 
     handleSelectClient(clientId) {
-      this.$router.push({ path: `/user/${clientId}` })
+      this.$nuxt.$router.push({ path: `/user/${clientId}` })
       return clientId
     }
   }

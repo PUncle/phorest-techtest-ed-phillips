@@ -85,9 +85,9 @@ export default {
   },
 
   async mounted() {
-    if (this.$route.params.id) {
+    if (this.$nuxt.$route.params.id) {
       this.apiLoading = true
-      const cleanRouteParam = whitelistChars(this.$route.params.id)
+      const cleanRouteParam = whitelistChars(this.$nuxt.$route.params.id)
       this.userData = await this.getSingleUser(cleanRouteParam)
       this.voucherData = await this.getUserVouchers(cleanRouteParam)
       this.apiLoading = false
