@@ -1,6 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
 import ClientSearch from '@/pages/client-search.vue'
-jest.mock('axios')
 
 let wrapper
 afterEach(() => {
@@ -26,6 +25,15 @@ describe('ClientSearch detail page', () => {
     })
 
     expect(wrapper.findAll('.form-errors li')).toHaveLength(2)
+  })
+
+  it('when input is < 3 chars after trim push error to formErrors array', () => {
+    wrapper = shallowMount(ClientSearch, {
+      mocks: { $route: { query: { term: '' } } }
+    })
+
+    wrapper.vm.validateUserInput('Sm')
+    expect(wrapper.vm.formErrors.length).toBe(1)
   })
 
   it('validateUserInput method returns a single word, stripped of unwanted chars', () => {
