@@ -1,7 +1,7 @@
 <template>
   <article class="client-result" :data-client-id="clientId">
-    <div class="flex flex-wrap justify-between items-center">
-      <div class="flex flex-row justify-start leading-normal">
+    <div class="flex flex-row justify-between items-center">
+      <div class="flex flex-row justify-start leading-normal w-5/6 md:w-full">
         <div class="w-auto h-auto flex-none text-center pt-4 pl-4">
           <GenderIcon :gender="gender" class="m-auto inline-block" />
           <div
@@ -21,6 +21,7 @@
             </span>
           </div>
         </div>
+
         <div class="p-4">
           <div class="text-md text-gray-600 flex items-center mb-2">
             <div>
@@ -54,10 +55,10 @@
 
       <div
         v-if="buttonText && (!banned && !archived)"
-        class="w-full md:w-auto h-auto mx-4 mb-4 uppercase text-white text-center"
+        class="h-auto mr-4 uppercase text-white text-center"
       >
         <button
-          class="select w-full hover:bg-blue-700"
+          class="select hover:bg-blue-700"
           @click="$emit('user-click', $el.dataset.clientId)"
         >
           {{ buttonText }}
