@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full">
+  <main class="w-full overflow-x-hidden">
     <LoadingSpinner v-if="apiLoading" />
     <div v-else>
       <div class="flex flex-wrap">

@@ -1,9 +1,9 @@
 <template>
   <article class="voucher">
-    <div class="flex flex-row bg-gray-200 rounded p-4">
+    <div class="flex flex-wrap bg-gray-200 rounded p-4 mx-4">
       <div>
         <h2 class="text-4xl uppercase font-title leading-tight m-0">Voucher</h2>
-        <ul class="text-lg">
+        <ul class="text-lg w-full sm:w-1/2">
           <li>
             <span class="label">Expires:</span> {{ parseDate(expiryDate) }}
           </li>
@@ -13,7 +13,7 @@
         </ul>
       </div>
 
-      <ul class="text-sm leading-snug ml-6">
+      <ul class="text-sm leading-snug  w-full sm:w-1/2 sm:ml-6">
         <li>
           <span class="label">Issue date:</span> {{ parseDate(issueDate) }}
         </li>

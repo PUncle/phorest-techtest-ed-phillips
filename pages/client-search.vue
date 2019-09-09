@@ -44,7 +44,7 @@
       <p>{{ apiErrorMessage }}</p>
     </section>
 
-    <section class="results max-w-md m-auto">
+    <section class="results max-w-md m-auto p-2">
       <LoadingSpinner v-if="apiLoading" />
       <div v-if="clients && clients.results">
         <p class="mb-2">

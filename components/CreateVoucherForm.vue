@@ -7,8 +7,8 @@
       <h2 class="text-2xl">
         {{ voucherPostSuccess ? 'Voucher created' : 'Create a voucher' }}
       </h2>
-      <div>
-        <span class="text-white text-2xl">
+      <div class="flex flex-row justify-center">
+        <span class="text-white text-2xl h-full pr-2">
           &pound;
         </span>
         <input
@@ -17,10 +17,10 @@
           placeholder="Value"
         />
         <button
-          class="create-voucher bg-blue-500 text-white font-bold py-2 px-4 uppercase"
+          class="create-voucher bg-blue-500 text-white font-bold py-2 p-4 uppercase"
           @click="$emit('handle-add-voucher')"
         >
-          Add voucher
+          Add
         </button>
       </div>
     </div>
