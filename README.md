@@ -4,7 +4,7 @@
 
 ## Requirements
 
-You'll need a `.env` file in the root of this project for it to work with the following variables:
+You'll need an `.env` file in the root of this project for it to work, containing the following variables:
 
 ```text
 NUXT_ENV_BASIC_AUTH_USER=
@@ -14,7 +14,7 @@ NUXT_ENV_BRANCH_ID=
 NUXT_ENV_API_BASE=https://api-gateway-dev.phorest.com/third-party-api-server/api
 ```
 
-I used the details provided in the tech test description.
+Please use the details provided in the tech test description.
 
 ## Build Setup
 
