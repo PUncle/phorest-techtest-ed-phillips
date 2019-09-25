@@ -44,7 +44,7 @@ removeDuplicateResults(clientArray) {
       if (!searchTerm.data.page.size) {
         return accumulator
       }
-      searchTerm.data._embedded.clients.map(
+      searchTerm.data._embedded.clients.forEach(
         customer => (accumulator.list[customer.clientId] = customer)
       )
       return accumulator
