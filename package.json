@@ -16,7 +16,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-purgecss": "^0.2.1"
   },
   "devDependencies": {
@@ -43,6 +43,6 @@
     "prettier": "^1.16.4",
     "stylelint-config-recommended": "^2.2.0",
     "tailwindcss": "^1.0.0",
-    "vue-jest": "^3.0.3"
+    "vue-jest": "^4.0.1"
   }
 }
